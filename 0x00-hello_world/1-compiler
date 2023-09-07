@@ -1,2 +1,2 @@
 #!/bin/bash
-c_file=$CFILE | file_name="${c_file%.*}" | output_file="$file_name.o | gcc -c $c_file -o $output_file
+gcc -c $CFILE -o `echo $CFILE | cut -d. -f1`.o
