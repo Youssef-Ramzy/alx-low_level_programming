@@ -1,2 +1,14 @@
 #!/bin/bash
-gcc -c $CFILE -o 'echo $CFILE | cut -d. -f1'.o
+
+# Get the C file name from the $CFILE variable
+c_file=$CFILE
+
+# Extract the file name without the extension
+file_name="${c_file%.*}"
+
+# Define the output file name with the .o extension
+output_file="$file_name.o"
+
+# Compile the C file without linking
+gcc -c $c_file -o $output_file
+
