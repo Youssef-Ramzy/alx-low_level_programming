@@ -22,7 +22,7 @@ void print_alphabet_x10(void)
 			ch++;
 		}
 		line++;
-		_putcahr('\n');
+		_putchar('\n');
 		ch = 'a';
 	}
 }
