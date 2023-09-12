@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * main - Entry point
  * print_alphabet_x10 - this prints letters
+ *
  * Description: print_alphabet_x10
  *
  * Return: Always 0 (Success)
@@ -22,8 +22,8 @@ void print_alphabet_x10(void)
 			ch++;
 		}
 		line++;
+		_putcahr('\n');
 		ch = 'a';
 	}
-	_putchar('\n');
 }
 
