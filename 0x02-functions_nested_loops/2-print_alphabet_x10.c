@@ -1,10 +1,9 @@
-#include <stdio.h>
 #include "main.h"
 
 /**
  * main - Entry point
- *
- * Description: print_alphabet_x10 - function that will print the alphabet 10 times
+ * print_alphabet_x10 - this prints letters
+ * Description: print_alphabet_x10
  *
  * Return: Always 0 (Success)
 */
@@ -23,6 +22,8 @@ void print_alphabet_x10(void)
 			ch++;
 		}
 		line++;
-	}	_putchar('\n');
+		ch = 'a';
+	}
+	_putchar('\n');
 }
 
