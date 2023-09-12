@@ -13,16 +13,16 @@
 void print_alphabet_x10(void)
 {
 	int ch = 'a';
-	int i = 0;
+	int line = 0;
 
-	while (ch <= 'z')
+	while (line < 10)
 	{
-		while (i < 10)
+		while (ch <= 'z')
 		{
 			putchar(ch);
-			i++;
+			ch++;
 		}
-		ch++;
+		line++;
 	}
 	putchar('\n');
 }
