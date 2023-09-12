@@ -4,7 +4,7 @@
 /**
  * main - Entry point
  *
- * Description: prints_alphabet_x10 using putchar prototype
+ * Description: print_alphabet_x10 - function that will print the alphabet 10 times
  *
  * Return: Always 0 (Success)
 */
@@ -19,11 +19,10 @@ void print_alphabet_x10(void)
 	{
 		while (ch <= 'z')
 		{
-			putchar(ch);
+			_putchar(ch);
 			ch++;
 		}
 		line++;
-	}
-	putchar('\n');
+	}	_putchar('\n');
 }
 
