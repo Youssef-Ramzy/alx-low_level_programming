@@ -1,7 +1,7 @@
 #include"main.h"
 
 /**
- * _islower - function to checks for alphabetic character
+ * _isalpha - function to checks for alphabetic character
  *
  *
  * @c: checks input of function
@@ -14,7 +14,7 @@ int _isalpha(int c)
 {
 	if (c >= 97 && c <= 122)
 		return (1);
-		else if (c >=65 && c <= 90)
+		else if (c >= 65 && c <= 90)
 		return (1);
 		else
 		{
