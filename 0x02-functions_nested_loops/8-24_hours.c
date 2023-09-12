@@ -14,11 +14,11 @@ void jack_bauer(void)
 	{
 		while (m < 60)
 		{
-			putchar(hour / 10 + '0');
-			putchar(hour % 10 + '0');
+			putchar(h / 10 + '0');
+			putchar(h % 10 + '0');
 			putchar(':');
-			putchar(minute / 10 + '0');
-			putchar(minute % 10 + '0');
+			putchar(m / 10 + '0');
+			putchar(m % 10 + '0');
 			putchar('\n');
 			m++;
 		}
