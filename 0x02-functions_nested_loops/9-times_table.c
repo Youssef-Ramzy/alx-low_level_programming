@@ -22,20 +22,20 @@ void times_table(void)
 		while (j <= 9)
 			r = i * j;
 		}
-		if (j == 0)
-		{
-			_putchar(r + '0');
+			if (j == 0)
+			{
+				_putchar(r + '0');
+			}
+			else
+			{
+				_putchar(',');
+				_putchar(' ');
+				_putchar(r / 10 + '0');
+				_putchar(r % 10 + '0');
+			}
+			j++;
 		}
-	 	else
-		{
-		_putchar(',');
-		_putchar(' ');
-		_putchar(r / 10 + '0');
-		_putchar(r % 10 + '0');
-		}
-		j++;
-		}
-	_putchar('\n');
-	i++;
+		_putchar('\n');
+		i++;
 	}
 }
