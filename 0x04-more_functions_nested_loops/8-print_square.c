@@ -8,7 +8,7 @@
  * Return: Always 0 (Success)
 */
 
-void print_square(int size);
+void print_square(int size)
 {
 	int i, x;
 
@@ -22,7 +22,7 @@ void print_square(int size);
 			{
 				_putchar(35);
 			}
-			putchar('\n');
+			_putchar('\n');
 		}
 	}
 }
