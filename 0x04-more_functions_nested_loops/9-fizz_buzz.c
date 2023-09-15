@@ -27,9 +27,7 @@ int main(void)
 			printf("buzz ");
 		}
 		else
-		{
 			printf("%d ", n);
-		}
 	}
 	putchar('\n');
 	return (0);
