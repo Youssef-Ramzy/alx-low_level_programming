@@ -1,4 +1,4 @@
-#include "main.h"
+#include"main.h"
 
 /**
  * print_triangle - prints a triangle
@@ -10,21 +10,20 @@
 
 void print_triangle(int size)
 {
+	int hght, base;
+
 	if (size <= 0)
-	{
 		_putchar('\n');
-	}
 	else
 	{
-		for (int r = 1; r <= size; r++)
+		for (hght = 1; hght <= size; ++hght)
 		{
-			for (int c = 1; c <= size - r; c++)
+			for (base = 1; base <= size; ++base)
 			{
-				_putchar(' ');
-			}
-			for (int k = 1; k <= r; k++)
-			{
-				_putchar('#');
+				if ((hght + base) <= size)
+					_putchar(' ');
+				else
+					_putchar('#');
 			}
 			_putchar('\n');
 		}
