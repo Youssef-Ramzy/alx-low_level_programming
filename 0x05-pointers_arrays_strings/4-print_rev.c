@@ -8,14 +8,15 @@
  * Return: Nothing
 */
 
-void print_rev(char *s);
+void print_rev(char *s)
 {
-	int count;
+	int i = 0;
 
-	for (count = 0; *s != '\0'; s++)
-		count++;
-	for (count >= 0; count--)
-		_putchar(*s + 0);
-		s++;
-	_putchar('\n');
+	while (s[i])
+		i++;
+	while (i++)
+	{
+		_putchar(s[i]);
+	}
+	_putchar('\n);
 }
