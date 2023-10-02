@@ -7,9 +7,21 @@
 */
 int main(int argc, char *argv[])
 {
-	if (argc < 3)
+	int i, num;
+
+	if (argc > 1)
+	{
+		for (i = 1; i < argc; i++)
+		{
+			num *= atoi(argv[i]);
+		}
+		printf("%d\n", num);
+	}
+	else
+	{
 		printf("Error\n");
-	printf("%d\n", atoi((*argv[1]) * (*argv[2])));
+		return (1);
+	}
+	
 	return (0);
 }
-
