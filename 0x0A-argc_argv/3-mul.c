@@ -8,17 +8,29 @@
 */
 int main(int argc, char *argv[])
 {
-	int i, sum;
+	int i, j, mul = 1;
 
-	if (argc = 2)
-	{
-		sum = atoi(argv[1]) * atoi(argv[2]);
-		printf("%d\n", sum);
-	}
-	else
+	if (argc < 3)
 	{
 		printf("Error\n");
 		return (1);
 	}
+	else
+	{
+		for (i = 1; i < argc; i++)
+		{
+			for (j = 0; argv[i][j]; j++)
+			{
+				if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
+				{
+					printf("Error\n");
+					return (1);
+				}
+			}
+			mul *= atoi(argv[i]);
+		}
+	}
+	printf("%d\n", mul);
 	return (0);
 }
+
