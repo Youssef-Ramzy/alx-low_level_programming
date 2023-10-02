@@ -5,6 +5,5 @@
 # that are in the out directory
 
 gcc -c -Wall -Werror -Wextra *.c
-ar -rcs liball.a *.o
+ar -rc liball.a *.o
 rm -rf *.o
-
