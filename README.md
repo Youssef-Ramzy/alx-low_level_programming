@@ -65,3 +65,4 @@ git clone https://github.com/AndresSern/holberton-system_engineering-devops.git/
 - Language: Ruby 3.0 script, Bash script  
 - OS: Ubuntu 14.04 LTS
 - Style guidelines: shellcheck to check if the style in files bash is correct
+help
