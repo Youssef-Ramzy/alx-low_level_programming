@@ -1,3 +1,7 @@
+#include "function_pointers.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
 /**
  * int_index - searches for an integer
  * @array: array of integers
