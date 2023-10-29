@@ -8,20 +8,23 @@
 void print_binary(unsigned long int n)
 {
 	unsigned long int mask = 1;
-	int i = 0;
+	int flag = 0;
 
-	while (mask < n)
+	mask <<= 63;
+	if (n == 0)
 	{
-		mask <<= 1;
-		i++;
+		printf("0");
+		return;
 	}
-	while (i >= 0)
+	while (mask > 0)
 	{
-		if (n & mask)
-			putchar('1');
-		else
-			putchar('0');
+		if ((n & mask) == 0 && flag == 1)
+			printf("0");
+		else if ((n & mask) != 0)
+		{
+			printf("1");
+			flag = 1;
+		}
 		mask >>= 1;
-		i--;
 	}
 }
