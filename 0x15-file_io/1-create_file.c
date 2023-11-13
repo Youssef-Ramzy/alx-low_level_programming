@@ -11,7 +11,7 @@ int create_file(const char *filename, char *text_content)
 
 	if (filename == NULL)
 		return (0);
-	file = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0400 | 0200);
+	file = open(filename, O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
 	if (file == -1)
 		return (-1);
 	if (text_content)
