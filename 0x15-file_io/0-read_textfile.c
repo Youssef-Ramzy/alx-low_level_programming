@@ -11,15 +11,15 @@
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	size_t size;
-	int file;
+	int file, i;
 	char buffer[letters];
 
 	if (filename == NULL)
 		return (0);
 	file = open("filename", O_RDONLY);
-	for (int i = 0; i < letters; i++)
+	for (i = 0; i < letters; i++)
 	{
-		read(filename, buffer[i], letters);
+		read("filename", buffer[i], letters);
 		size += write(0, buffer[i], 1);
 	}
 
