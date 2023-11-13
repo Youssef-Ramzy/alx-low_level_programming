@@ -10,7 +10,7 @@ int create_file(const char *filename, char *text_content)
 	int file, check, size = 0;
 
 	if (filename == NULL)
-		return (0);
+		return (-1);
 	file = open(filename, O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
 	if (file == -1)
 		return (-1);
@@ -23,5 +23,5 @@ int create_file(const char *filename, char *text_content)
 			return (-1);
 	}
 	close(file);
-	return (0);
+	return (1);
 }
