@@ -1,80 +1,57 @@
 #include "main.h"
-
-#define BUF_SIZE 64
-
-void write_error(char *msg);
-void check_elf_file(char *buf);
-void print_elf_header(char *buf);
-
 /**
- * main - displays the information contained in the ELF header at the start of
- *        an ELF file.
- *
- * @argc: number of arguments
- * @argv: array of arguments
- *
- * Return: Always 0.
+ * handle_error - handles errors and exits program
+ * @error_message: error message to print
+ * @file_descriptor: file descriptor to close
  */
-int main(int argc, char *argv[])
+void handle_error(const char *error_message, int file_descriptor)
 {
-	int fd, rd;
-	char buf[ELF_DATA];
-	ssize_t sz;
+	if (file_descriptor != -1)
+	{
+		close(file_descriptor);
+	}
+	dprintf(STDERR_FILENO, "%s\n", error_message);
+	exit(98);
+}
+/**
+ * main - program entry point
+ * @argument_count: number of arguments passed to program
+ * @argument_values: array of pointers to argument strings
+ * Return: 0 on success, 98 on failure
+*/
+int main(int __attribute__((__unused__)) argument_count,
+	 char *argument_values[])
+{
+	Elf64_Ehdr elf_header;
+	int elf_file_descriptor;
 
-	if (argc != 2)
+	elf_file_descriptor = open(argument_values[1], O_RDONLY);
+	if (elf_file_descriptor == -1)
 	{
-		dprintf(STDERR_FILENO, "Usage: %s elf_filename\n", argv[0]);
-		exit(98);
+		handle_error("Error: Can't read file", -1);
 	}
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
+
+	if (read(elf_file_descriptor, &elf_header, sizeof(Elf64_Ehdr))
+		!= sizeof(Elf64_Ehdr))
 	{
-		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
-		exit(98);
+		handle_error("Error: Can't read file", elf_file_descriptor);
 	}
-	rd = read(fd, buf, ELF_DATA);
-	if (rd == -1)
+
+	check_if_elf(elf_header.e_ident);
+	printf("ELF Header:\n");
+	print_magic(elf_header.e_ident);
+	print_class(elf_header.e_ident);
+	print_data(elf_header.e_ident);
+	print_version(elf_header.e_ident);
+	print_osabi(elf_header.e_ident);
+	print_abi(elf_header.e_ident);
+	print_type(elf_header.e_type, elf_header.e_ident);
+	print_entry(elf_header.e_entry, elf_header.e_ident);
+
+	if (close(elf_file_descriptor) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
+		handle_error("Error: Can't close fd", elf_file_descriptor);
 	}
-	sz = write(STDOUT_FILENO, buf, rd);
-	if (sz == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to STDOUT\n");
-		exit(98);
-	}
-	close(fd);
+
 	return (0);
-}
-/**
- * write_error - writes an error message to STDERR
- * @msg: the error message
- * Return: void
-*/
-void write_error(char *msg)
-{
-	write(STDERR_FILENO, msg, BUF_SIZE);
-}
-/**
- * check_elf_file - checks if the file is an ELF file
- * @buf: buffer containing the first bytes of the file
- * Return: void
-*/
-void check_elf_file(char *buf)
-{
-	if (buf[0] != 0x7f || buf[1] != 'E' || buf[2] != 'L' || buf[3] != 'F')
-	{
-		write_error("Error: Not an ELF file\n");
-		exit(98);
-	}
-}
-/**
- * print_elf_header - prints the ELF header
- * @buf: buffer containing the first bytes of the file
- * Return: void
-*/
-void print_elf_header(char *buf)
-{
-	write(STDOUT_FILENO, "Magic:   ", 9);
 }
